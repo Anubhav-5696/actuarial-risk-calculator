@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actuarial-risk-calculator-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: actuarial-risk-calculator
+  template:
+    metadata:
+      labels:
+        app: actuarial-risk-calculator
+    spec:
+      containers:
+      - name: actuarial-risk-calculator
+        image: actuarial-risk-calculator:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
